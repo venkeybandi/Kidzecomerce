@@ -1,12 +1,3 @@
-/**
- * @license
- * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */
 
 import '@polymer/polymer/polymer-element.js';
 
@@ -102,6 +93,95 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
       [main-title]{
         font-size: 36px;
         font-weight: 900;
+      }
+
+      <!-- checkoutlogin page styles -->
+
+      paper-input {
+        height: 50px;
+        width: 45%;
+        margin: 0 0px 30px;
+        box-sizing: border-box;
+    } 
+    .place-btn{
+        width: 100%;
+        margin: 30px 0;
+    }
+    .paperbtn{
+        position: relative;
+        width: 260px;
+        background-color: var(--royalblue);
+        transition: all .3s ease-in-out;
+        display: block;
+        cursor: pointer;
+        text-align: center;
+        color: #fff;
+        padding: 8px 0;
+        border-radius: 4px;
+        margin: 0 auto;
+        text-decoration: none;
+        border: none;
+        font-size: 20px;
+    }
+    .paperbtn:hover{
+        background-color: var(--app-primary-color);
+    }
+    form{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        justify-content: space-between;
+      }
+    .shiping-title{
+        width: 100%;
+        background: var(--royalblue);
+        color: #ffffff;
+        padding: 10px;
+        margin: 20px 0;
+        text-transform: uppercase;
+        font-size: 28px;
+    }
+    .address-details, .payment-details{
+        display: block;
+        width: 100%;
+        margin: 20px 0;
+        text-transform: uppercase;
+    }
+    .address-details h3, .payment-details h3{
+        padding: 5px 10px;
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: .32px;                
+        background: var(--royalblue);
+        color: #ffffff;
+    }
+    .card{
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+    @media (max-width: 768px) and (min-width: 641px) {
+    
+        
+    }
+    @media (max-width: 640px){
+        paper-input {
+            width: 100%;
+            margin: 0 0px 30px;
+        } 
+        .shiping-title {
+            font-size: 26px;
+        }
+        .address-details h3, .payment-details h3{
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .card{
+            width: 100%;
+        }
       }
     </style>
   </template>
