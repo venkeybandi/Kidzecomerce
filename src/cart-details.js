@@ -1,14 +1,14 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 // import { OptionalMutableData } from '@polymer/polymer/lib/mixins/mutable-data.js';
 import '@polymer/iron-ajax/iron-ajax.js';
-import './newarival-products';
+import  {NewarivalProducts } from './newarival-products.js';
 import './shared-styles.js';
 import './cart-summary-styles.js';
 import './banners-promos/promo-banner3.js';
 import './order-summary.js';
 
 
-class CartDetails extends PolymerElement {
+export class CartDetails extends NewarivalProducts {
     static get template() {
         return html `
         <!-- Compiled and minified CSS -->
@@ -41,7 +41,9 @@ class CartDetails extends PolymerElement {
             text-align: center;
         }
         @media (max-width: 768px) and (min-width: 641px) {
-            
+            .title{
+                margin: 0;
+            }
             .checkout-btn {
                 width: 340px;
             }
@@ -50,6 +52,9 @@ class CartDetails extends PolymerElement {
             .checkout-btn{
                 width: 100%;
                 padding: 0;
+            }
+            .title{
+                margin: 0;
             }
           }
         </style>
@@ -74,7 +79,7 @@ class CartDetails extends PolymerElement {
 
         <div class="container"> <!-- container -->
             <div class="row">   <!-- row -->
-                <div class="col m7 s12"> <!-- col 6 12 start-->
+                <div class="col m6 s12"> <!-- col 6 12 start-->
                     <div class="products-container"> <!--  product container start-->
                         <div class="product-header">
                             <h5 class="product-title">PRODUCT</h5>
@@ -105,8 +110,40 @@ class CartDetails extends PolymerElement {
                     </div> <!--  product container End--> 
                 </div>  <!-- col 6 12 end -->
 
+                
+
                 <div class="col m6 s12"> <!-- col 6 12 start-->
-                <!-- <order-summary></order-summary> -->
+                    <div class="order-summary">
+                        <div class="orderSummary">
+                            <h1>Order Summary</h1>
+                            <div class="producttotal line1">
+
+                                <span class="ordertitle">Orders amount:</span>
+                                <span class="orderlvalue">
+                                    <iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>
+                                    {{cartCost}}</span>
+                            </div>
+
+                            <div class="producttotal line2">
+                                <span class="ordertitle">delivery charges:</span>
+                                <span class="orderlvalue"><iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>
+                                {{dellivarycharges}}</span>
+                            </div>
+
+                            <div class="producttotal line3">
+                                <span class="ordertitle">Tax:</span>
+                                <span class="orderlvalue"><iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>
+                                {{taxamount}}</span>
+                            </div>
+
+                            <div class="producttotal line4">
+                                <span class="ordertitle">Total amount</span>
+                                <span class="orderlvalue"><iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>{{summarytotalamount}}</span>
+                            </div>
+                        </div>
+                    </div> 
+
+
                     <!-- <div class="checkout-btn">
                         <a data-target="modal1" role="link" href="[[rootPath]]login" class="place-btn">Place Order</a>
                     </div>-->
@@ -117,9 +154,48 @@ class CartDetails extends PolymerElement {
 
     `;
     }
+
+    //adding properties to to accessing the application where ever required
+    static get properties() { return { 
+        response: { type: Object },
+          _isRequest:{
+            type:Boolean,
+            value:true
+          },
+          cartCost:{
+            type: Object,
+            value: null
+          },
+          dellivarycharges:{
+            type: Number,
+            value: null
+          },
+          taxamount:{
+            type: Number,
+            value: null
+          },
+          summarytotalamount:{
+            type: Number,
+            value: null
+          }
+    
+        }
+      }
+  
     ready() {
         super.ready();
         this.itemList = JSON.parse(window.localStorage.getItem('productsInLocalStore'));
+
+        //summary calculations section Amount, Delivary charges, TOTAL COAT
+        this.cartCost = window.localStorage.getItem('totalamount');
+
+        this.dellivarycharges = this.cartCost * 0.02;
+
+        this.taxamount = this.cartCost * 0.01;
+
+        this.summarytotalamount = Math.round(Number(this.cartCost) + Number(this.dellivarycharges) + Number(this.taxamount));
+
+        
     }
 }
 
