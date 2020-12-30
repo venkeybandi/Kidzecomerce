@@ -86,7 +86,7 @@ class CheckoutLogin extends PolymerElement {
                         </paper-input>
 
                         <div class="place-btn">
-                            <input type="submit" value="Add Employee" on-click="adddetails" class="paperbtn btn">
+                            <input type="submit" value="PLACE ORDER" on-click="adddetails" class="paperbtn btn">
                         </div>
                     </form>
                 </iron-form>
