@@ -11,7 +11,7 @@ import '@polymer/polymer/lib/elements/array-selector.js';
 
 
 
-class NewarivalProducts extends PolymerElement {
+export class NewarivalProducts extends PolymerElement {
   static get template() {
     return html`
     <style include="shared-products-style">
@@ -38,22 +38,22 @@ class NewarivalProducts extends PolymerElement {
         </iron-ajax>
         
         <h1>New Arrivals</h1>
-
         <div class="products-container"> <!-- products-container start-->
         
           <!--using iron-ajax response and do-repeat displaying json data and using one-way data binding-->
           <template is="dom-repeat"  id="itemList" items="[[response.results]]" as="item" grid>
             <div class="image" title="[[item.title]]">
               <span class="labeltag">[[item.label]]</span>
-              <a href="[[rootPath]]productdetails">
+              <a href="[[rootPath]]productdetails" role="link">
                 <img class="img" id="img" src='[[item.image]]' alt='[[item.image]]'></img>
               </a>
-              <h3 id="title" class="title" title="[[item.title]]">[[item.title]]</h3>
+              <h3 id="title" class="title" title="[[item.title]]" role="title">[[item.title]]</h3>
               <h4 id="price" class="price"><iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>[[item.price]]</h4>
               <input type="submit" on-click="addProduct" class="add-cart" value="Add Cart "></input>
             </div>
+         
           </template>
-
+          
           <!-- Using  array-selector we are going to push the product details into arraylist -->
           <array-selector id="selector" items="{{response.results}}" selected="{{selected}}" multi toggle></array-selector>
         
@@ -64,11 +64,16 @@ class NewarivalProducts extends PolymerElement {
     `;
   }
 
+  //properties section if rquired any
   static get properties() { return { 
     response: { type: Object },
       _isRequest:{
         type:Boolean,
         value:true
+      },
+      cartCost:{
+        type: Object,
+        value: null
       }
 
     }
@@ -101,11 +106,10 @@ class NewarivalProducts extends PolymerElement {
      }
 
     addProduct(e) {
-           var item = this.$.itemList.itemForElement(e.target);
+            var item = this.$.itemList.itemForElement(e.target);
             this.$.selector.select(item);
             console.log(item);
 
-            
               //setting the json data into localstorage using locastorage
               var existingEntries = JSON.parse(localStorage.getItem("productsInLocalStore"));
               if (existingEntries == null) existingEntries = [];
@@ -113,8 +117,6 @@ class NewarivalProducts extends PolymerElement {
             
               //product amount
               var totalamount = item.price * item.inCart;
-              
-              
 
               //adding products into the arraylist using array push
               productlist.push(item.image, item.title, item.price, item.inCart, totalamount)
@@ -122,9 +124,7 @@ class NewarivalProducts extends PolymerElement {
 
               //updataing products itteration multiple products
               window.localStorage.setItem('CurrentList', JSON.stringify(productlist));
-              var newproperty = productlist.slice(3,5);
-              window.localStorage.setItem('newproperty1', JSON.stringify(newproperty));
-              newproperty.push(item.inCart, totalamount);
+
               //adding  products into existing products list
               existingEntries.push(productlist);
               //Finally store the all products using localstorage setitem
@@ -135,8 +135,19 @@ class NewarivalProducts extends PolymerElement {
               
               //increment product quanty 
               e.model.set('item.inCart', e.model.item.inCart+1);  
+            
+              ////calculating total products amount
+              this.cartCost = window.localStorage.getItem('totalamount');
+              //checking cart cost if exist
+              if(this.cartCost != null){
+                this.cartCost = parseInt(this.cartCost);
+                window.localStorage.setItem("totalamount", this.cartCost + item.price); 
+                // e.model.set('item.totalamount', cartCost);                
+              } else{
+                window.localStorage.setItem("totalamount", item.price);	
+            }
         }
-
+       
         
   }
 
