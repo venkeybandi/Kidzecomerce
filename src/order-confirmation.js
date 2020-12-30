@@ -1,12 +1,13 @@
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { CartDetails } from './cart-details.js';
 import './shared-styles.js';
 import './newarival-products.js';
 import './cart-summary-styles.js';
 import './order-summary.js';
 import './cart-details.js';
 
-class OrderConfirmation extends PolymerElement {
+class OrderConfirmation extends CartDetails {
   static get template() {
     return html`
     <!-- Compiled and minified CSS -->
@@ -64,6 +65,14 @@ class OrderConfirmation extends PolymerElement {
     strong{
         font-weight: 600!important;
     }
+    @media (max-width: 600px){
+        .order-confirm h1 {
+            font-size: 28px;
+        }
+        .order-receipt {
+            margin: 20px 0;
+        }
+    }
     </style>
     <template is="dom-repeat" items="{{customerlist}}">
         <div class="container">
@@ -85,6 +94,7 @@ class OrderConfirmation extends PolymerElement {
                 <h1 class="order-receipt">Order receipt</h1>
             </div>
 
+            <!-- shipping detiles and customer detailes and payment details -->
             <div class = "col s12 shiping-details" >
                 <div class = "col m6 s12">
                     <!-- Receving data where stored in local storage and displaying here -->
@@ -120,7 +130,7 @@ class OrderConfirmation extends PolymerElement {
             </div>
         </div> <!-- row -->
 
-
+        <!-- Placed order products displying -->
         <div class="row">   <!-- row -->
             <div class="col m6 s12"> <!-- col 6 12 start-->
                 <div class="products-container"> <!--  product container start-->
@@ -150,6 +160,39 @@ class OrderConfirmation extends PolymerElement {
                     </template>
                 </div> <!--  product container End--> 
             </div>  <!-- col 6 12 end -->
+
+            <!-- Order summary details -->
+            <div class="col m6 s12"> <!-- col 6 12 start-->
+                <div class="order-summary">
+                    <div class="orderSummary">
+                        <h1>Order Summary</h1>
+                        <div class="producttotal line1">
+
+                            <span class="ordertitle">Orders amount:</span>
+                            <span class="orderlvalue">
+                                <iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>
+                                {{cartCost}}</span>
+                        </div>
+
+                        <div class="producttotal line2">
+                            <span class="ordertitle">delivery charges:</span>
+                            <span class="orderlvalue"><iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>
+                            {{dellivarycharges}}</span>
+                        </div>
+
+                        <div class="producttotal line3">
+                            <span class="ordertitle">Tax:</span>
+                            <span class="orderlvalue"><iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>
+                            {{taxamount}}</span>
+                        </div>
+
+                        <div class="producttotal line4">
+                            <span class="ordertitle">Total amount</span>
+                            <span class="orderlvalue"><iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>{{summarytotalamount}}</span>
+                        </div>
+                    </div>
+                </div> 
+            </div>  <!-- col 6 12 end -->
         </div>  <!-- row -->
     </div>  <!-- container -->
     `;
@@ -163,7 +206,12 @@ class OrderConfirmation extends PolymerElement {
     //product details getting through local storage and displying in confirmation section
     this.itemList = JSON.parse(window.localStorage.getItem('productsInLocalStore'));
 
-    // window.localStorage.clear(); //all items
+    //summary calculations section Amount, Delivary charges, TOTAL COAT
+    // this.cartCost = window.localStorage.getItem('totalamount');
+
+    // this.dellivarycharges = this.cartCost * 0.02;
+
+    // this.summarytotalamount = Number(this.cartCost) + Number(this.dellivarycharges);
 
     }
 
