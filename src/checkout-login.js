@@ -1,6 +1,6 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 //import {IronValidatableBehavior} from '@polymer/iron-validatable-behavior/iron-validatable-behavior.js';
-//import '@polymer/iron-form/iron-form.js';
+import '@polymer/iron-form/iron-form.js';
 import '@polymer/paper-button/paper-button.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/iron-icons/iron-icons.js';
@@ -28,94 +28,15 @@ class CheckoutLogin extends PolymerElement {
                 width: 45%;
                 margin: 0 0px 30px;
                 box-sizing: border-box;
-            } 
-            .place-btn{
-                width: 100%;
-                margin: 30px 0;
             }
-            .paperbtn{
-                position: relative;
-                width: 260px;
-                background-color: var(--royalblue);
-                transition: all .3s ease-in-out;
-                display: block;
-                cursor: pointer;
-                text-align: center;
-                color: #fff;
-                padding: 8px 0;
-                border-radius: 4px;
-                margin: 0 auto;
-                text-decoration: none;
-                border: none;
-                font-size: 20px;
-            }
-            .paperbtn:hover{
-                background-color: var(--app-primary-color);
-            }
-            form{
-                display: flex;
-                flex-wrap: wrap;
-                padding: 0;
-                margin: 0;
-                position: relative;
-                justify-content: space-between;
-              }
-            .shiping-title{
-                width: 100%;
-                background: var(--royalblue);
-                color: #ffffff;
-                padding: 10px;
-                margin: 20px 0;
-                text-transform: uppercase;
-                font-size: 28px;
-            }
-            .address-details, .payment-details{
-                display: block;
-                width: 100%;
-                margin: 20px 0;
-                text-transform: uppercase;
-            }
-            .address-details h3, .payment-details h3{
-                padding: 5px 10px;
-                margin: 0;
-                font-size: 18px;
-                font-weight: 500;
-                letter-spacing: .32px;                
-                background: var(--royalblue);
-                color: #ffffff;
-            }
-            .card{
-                width: 80%;
-                margin: 0 auto;
-                margin-bottom: 15px;
-            }
-            @media (max-width: 768px) and (min-width: 641px) {
-            
-                
-            }
-            @media (max-width: 640px){
-                paper-input {
-                    width: 100%;
-                    margin: 0 0px 30px;
-                } 
-                .shiping-title {
-                    font-size: 26px;
-                }
-                .address-details h3, .payment-details h3{
-                    font-size: 16px;
-                    font-weight: 600;
-                }
-                .card{
-                    width: 100%;
-                }
-              }
         </style>
 
         <div class="card">
             <div class="container">
                 <h2 class="shiping-title">Shipping Details </h2>
                 <iron-form>
-                    <form id="customerdetails" method="POST" name="customerdetails" action="/orderconfirm">
+                    <form is = "iron-form" id="customerdetails" method="POST" name="customerdetails" action="/form/handler">
+                        
                         <paper-input label="First name" name="fname" id="fname" required auto-validate error-message="Please enter the Full name"  autofocus>
                             <iron-icon icon="icons:account-circle" slot="prefix"></iron-icon>
                         </paper-input>
@@ -124,7 +45,7 @@ class CheckoutLogin extends PolymerElement {
                             <iron-icon icon="icons:account-circle" slot="prefix"></iron-icon>
                         </paper-input>
 
-                        <paper-input type="tel" label="Phone Number" placeholder="" name="phone" id="phone" required auto-validate error-message="Please enter the Phone number">
+                        <paper-input  label="Phone Number" placeholder="" name="phone" id="phone" required auto-validate pattern="[0-9]*" error-message="Please enter the Phone number">
                             <iron-icon icon="icons:settings-phone" slot="prefix"></iron-icon>
                         </paper-input>
 
@@ -148,7 +69,7 @@ class CheckoutLogin extends PolymerElement {
                         <paper-input label="State" name="state" id="state" required auto-validate error-message="Please enter the state">
                             <iron-icon icon="icons:home" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input type="number" label="Pincode" name="pincode" id="pincode"  required auto-validate error-message="Please enter the area postal pincode">
+                        <paper-input label="Pincode" name="pincode" id="pincode" pattern="[0-9]*" size="5"  required auto-validate error-message="Please enter the area postal pincode">
                             <iron-icon icon="icons:room" slot="prefix"></iron-icon>
                         </paper-input>
 
@@ -157,27 +78,23 @@ class CheckoutLogin extends PolymerElement {
                         <paper-input label="Card holder name" name="cardname" id="cardname"  required auto-validate error-message="Please enter the card holder name">
                             <iron-icon icon="icons:account-circle" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input type="number" label="Card number" name="cardno" id="cardno"  required auto-validate error-message="Please enter the credit and debit card number">
+                        <paper-input  label="Card number" name="cardno" id="cardno"  required auto-validate pattern="[0-9]*" size="16" error-message="Please enter the credit and debit card number">
                             <iron-icon icon="icons:account-balance" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input type="number" mask="*" label="Card pin number" name="cardpin" id="cardpin"  required auto-validate error-message="Please enter the Area pincode">
+                        <paper-input  mask="*" label="Card pin number" name="cardpin" id="cardpin" pattern="[0-9]*" size="4"  required auto-validate error-message="Please enter the Area pincode">
                             <iron-icon icon="icons:verified-user" slot="prefix"></iron-icon>
                         </paper-input>
 
                         <div class="place-btn">
-                           <paper-button on-tap="adddetails" class="paperbtn">PLACE ORDER</paper-button> 
+                            <input type="submit" value="Add Employee" on-click="adddetails" class="paperbtn btn">
                         </div>
                     </form>
                 </iron-form>
             </div>
-
         </div>
     `;
     }
-    ready() {
-        super.ready();
-
-    }
+    
     
     adddetails() {
         // Check browser support
@@ -200,82 +117,17 @@ class CheckoutLogin extends PolymerElement {
             var cardpin = this.$.cardpin.value;
 
             // checking the condition if the value is null or empty it's throw's error
-            
-            if (fname==null || fname=="")
-                {  
-                    alert("First Name can't be blank");  
-                    form.fname.focus();
-                    return false;  
-                    
-                }else if(lname==null || lname=="")
-                {  
-                    alert("Last Name can't be blank");  
-                    return false;  
-                } else if(phone==null || phone=="" || phone == length > 10 )
-                {  
-                    alert("Phone number can't be blank");  
-                    return false;  
-                } 
-                else if(email==null || email=="")
-                {  
-                    alert("Email can't be blank");  
-                    return false;  
-                } 
 
-                else if(doorno==null || doorno=="")
-                {  
-                    alert("Address can't be blank");  
-                    return false;  
-                } 
-                else if(street==null || street=="")
-                {  
-                    alert("street can't be blank");  
-                    return false;  
-                } 
-                else if(city==null || city=="")
-                {  
-                    alert("city can't be blank");  
-                    return false;  
-                } 
-                else if(state==null || state=="")
-                {  
-                    alert("state can't be blank");  
-                    return false;  
-                } 
-                else if(pincode==null || pincode=="")
-                {  
-                    alert("Area pincode can't be blank");  
-                    return false;  
-                } 
-                else if(cardname==null || cardname=="")
-                {  
-                    alert("card name can't be blank");  
-                    return false;  
-                } 
-                else if(cardno==null || cardno=="")
-                {  
-                    alert("Card number can't be blank");  
-                    return false;  
-                } 
-                else if(cardpin==null || cardpin=="")
-                {  
-                    alert("Card pin can't be blank");  
-                    return false;  
-                } 
-
-           
+           if( fname !="" && lname !="" && phone !="" && email !="" &&doorno !="" && street !="" &&
+           city !="" && state !="" && pincode !="" && cardname !="" && cardno !="" && cardpin !="") 
+           {
 
                 var existingEntries = JSON.parse(localStorage.getItem("customer-entries"));
                 if (existingEntries == null) existingEntries = [];
                 var customerlist = [];
 
-                // var index = this.myArray.indexOf(item);
-                // if (index != -1) {
-                // this.splice('myArray', index, 1, )
-                // }
-
                 //using array updating customer details 
-                customerlist.push(fname, lname, phone, email, doorno, street, city, state, pincode, cardname, cardno, cardpin)
+                customerlist.push(fname, lname, phone, email, doorno, street, city, state, pincode, cardname, cardno, cardpin);
                 //using localstorage customer details
                 window.localStorage.setItem('Current-Entry-List', JSON.stringify(customerlist));
                 existingEntries.push(customerlist);
@@ -285,9 +137,9 @@ class CheckoutLogin extends PolymerElement {
                 
                 //locating to the orderconfirmation page if successfully form submition
                 window.location.href = "orderconfirm" ;
-                return false;
+                return true;
 
-           
+            }
 
         } else {
             document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
