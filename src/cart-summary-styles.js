@@ -1,12 +1,3 @@
-/**
- * @license
- * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */
 
 import '@polymer/polymer/polymer-element.js';
 
@@ -27,7 +18,7 @@ $_documentContainer.innerHTML = `<dom-module id="cart-summary-styles">
           justify-content: center;
           flex-wrap: wrap;
           margin: 0 auto;
-          margin-top: 50px;
+          margin-top: 20px;
           padding-bottom: 100px;
       }
       
@@ -58,13 +49,13 @@ $_documentContainer.innerHTML = `<dom-module id="cart-summary-styles">
           align-items: center;
       }
       .quantity{
-          width: 35%;
+          width: 25%;
           border-bottom: 2px solid lightgrey;
           display: flex;
           align-items: center;
       }
       .total{
-          width: 15%;
+          width: 25%;
           border-bottom: 2px solid lightgrey;
           display: flex;
           align-items: center;
@@ -143,20 +134,28 @@ $_documentContainer.innerHTML = `<dom-module id="cart-summary-styles">
         text-transform: uppercase;
         border-bottom: 1px solid #aaa;
     }
-    .order-summary h4{
+    .producttotal span{
         margin: 0;
         font-size: 18px;
         font-weight: 500;
         line-height: inherit;
         letter-spacing: .24px;
+        display: inline-block;
+        padding-bottom: 8px;
     }
-    .order-summary h3{
+    .producttotal span:nth-of-type(1){
+        width: 60%;
+    }
+    .line4{
         border-top: 1px solid #aaa;
         border-bottom: 1px solid #aaa;
-        padding: 10px 0;
+        margin-top: 20px;
+    }
+    .line4 span{
         font-size: 24px;
         font-weight: 600;
-        margin-top: 20px;
+        padding: 10px 0;
+        margin: 0;
     }
     tr {
         border-bottom: 0!important;
@@ -176,6 +175,9 @@ $_documentContainer.innerHTML = `<dom-module id="cart-summary-styles">
         }
     }
     @media (max-width: 600px){
+      .products-container {
+        padding-bottom: 10px;
+      }
       .product-header {
           width: 95%;
           font-size: 14px;
@@ -223,8 +225,17 @@ $_documentContainer.innerHTML = `<dom-module id="cart-summary-styles">
             font-weight: 600;
             margin-top: 20px;
         }
-
     }
+    @media (max-width: 360px){
+        .order-summary h1 {
+            font-size: 24px;
+        }
+        .line4 span{
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
     </style>
   </template>
 </dom-module>`;
