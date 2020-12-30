@@ -68,7 +68,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
       }
       .cart{
         background: #ec303f;
-        padding: 5px!important;
+        padding: 5px 10px!important;
         border-radius: 50%;
       }
       @media (max-width: 600px){
@@ -81,7 +81,6 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
           font-size: 14px;
         }
         .cart {
-          padding: 5px!important;
           line-height: 24px!important;
           font-size: 14px!important;
         }
@@ -95,12 +94,10 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         font-weight: 900;
       }
 
-      <!-- checkoutlogin page styles -->
-
       paper-input {
         height: 50px;
         width: 45%;
-        margin: 0 0px 30px;
+        margin: 0 20px 30px;
         box-sizing: border-box;
     } 
     .place-btn{
@@ -109,14 +106,14 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
     }
     .paperbtn{
         position: relative;
-        width: 260px;
+        width: 300px;
         background-color: var(--royalblue);
         transition: all .3s ease-in-out;
         display: block;
         cursor: pointer;
         text-align: center;
         color: #fff;
-        padding: 8px 0;
+        padding: 15px 0;
         border-radius: 4px;
         margin: 0 auto;
         text-decoration: none;
@@ -164,13 +161,19 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         margin-bottom: 15px;
     }
     @media (max-width: 768px) and (min-width: 641px) {
-    
+      paper-input {
+        width: 45%;
+        margin: 0 10px 30px;
+      } 
+      .paperbtn{
+        width: 100%;
+      }
         
     }
     @media (max-width: 640px){
         paper-input {
             width: 100%;
-            margin: 0 0px 30px;
+            margin: 0 10px 30px;
         } 
         .shiping-title {
             font-size: 26px;
@@ -181,6 +184,9 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         }
         .card{
             width: 100%;
+        }
+        .paperbtn{
+          width: 100%;
         }
       }
     </style>
