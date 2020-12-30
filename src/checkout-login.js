@@ -23,12 +23,7 @@ class CheckoutLogin extends PolymerElement {
             font-family: "Roboto", "Noto", sans-serif;
             background: #f5f5f5;
             }
-            paper-input {
-                height: 50px;
-                width: 45%;
-                margin: 0 0px 30px;
-                box-sizing: border-box;
-            }
+            
         </style>
 
         <div class="card">
@@ -55,7 +50,7 @@ class CheckoutLogin extends PolymerElement {
 
                         <div class="address-details"><h3>Shipping Address</h3></div> 
 
-                        <paper-input label="Door Number" name="doorno" id="doorno" required auto-validate error-message="Please enter the Door number">
+                        <paper-input label="Door Number" name="doorno" id="doorno" required auto-validate error-message="Please enter the house or office door number">
                             <iron-icon icon="icons:home" slot="prefix"></iron-icon>
                         </paper-input>
                         <paper-input label="Street address" name="street" id="street" required auto-validate error-message="Please enter the Street and landmark">
@@ -69,7 +64,7 @@ class CheckoutLogin extends PolymerElement {
                         <paper-input label="State" name="state" id="state" required auto-validate error-message="Please enter the state">
                             <iron-icon icon="icons:home" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input label="Pincode" name="pincode" id="pincode" pattern="[0-9]*" size="5"  required auto-validate error-message="Please enter the area postal pincode">
+                        <paper-input label="Pincode" name="pincode" id="pincode" pattern="[0-9]*" size="5"  required auto-validate error-message="Please enter the 5 digit area postal pincode">
                             <iron-icon icon="icons:room" slot="prefix"></iron-icon>
                         </paper-input>
 
@@ -78,10 +73,10 @@ class CheckoutLogin extends PolymerElement {
                         <paper-input label="Card holder name" name="cardname" id="cardname"  required auto-validate error-message="Please enter the card holder name">
                             <iron-icon icon="icons:account-circle" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input  label="Card number" name="cardno" id="cardno"  required auto-validate pattern="[0-9]*" size="16" error-message="Please enter the credit and debit card number">
+                        <paper-input  label="Card number" name="cardno" id="cardno"  required auto-validate pattern="[0-9]*" size="16" error-message="Please enter the 16 digit credit or debit card number">
                             <iron-icon icon="icons:account-balance" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input  mask="*" label="Card pin number" name="cardpin" id="cardpin" pattern="[0-9]*" size="4"  required auto-validate error-message="Please enter the Area pincode">
+                        <paper-input  mask="*" label="Card pin number" name="cardpin" id="cardpin" pattern="[0-9]*" size="4"  required auto-validate error-message="Please enter the 4 digit number">
                             <iron-icon icon="icons:verified-user" slot="prefix"></iron-icon>
                         </paper-input>
 
