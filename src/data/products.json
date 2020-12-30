@@ -1,0 +1,101 @@
+{"results":
+[
+    {
+      "name":"Carters+Cloud",
+      "title":"Carters Cloud",
+      "category":"kids",
+      "price":560.20,
+      "description":"A versatile full-zip that you can wear all day long and even to the gym. This technical shell features moisture-wicking fabric, added stretch and a hidden pocket for your smartphone or media player.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Features:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;100% polyester.&lt;/li&gt;&lt;li&gt;Smooth, technical front with textured mesh back.&lt;/li&gt;&lt;li&gt;Drawstring bottom for adjustable fit.&lt;/li&gt;&lt;li&gt;Raglan sleeves.&lt;/li&gt;&lt;li&gt;Available in forest green with the white Google logo embroidered at left chest.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
+      "image":"./src/images/pic1.jpg"
+    },
+    {
+      "name":"Carters+Dinosaur",
+      "title":"Carters Dinosaur",
+      "category":"kids",
+      "price":450.50,
+      "description":"You'll be swooning over this crew neck as soon as you feel how soft it is.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Features:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;40% preshrunk ring-spun cotton, 60% polyester terry fleece.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Available in dark heather charcoal with the white Google logo screen printed across center chest.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
+      "image":"./src/images/pic2.jpg"
+    },
+    {
+      "name":"Carters+Monster",
+      "title":"Carters Monster",
+      "category":"kids",
+      "price":750.65,
+      "description":"Ultra soft. Ultra cozy. Our popular flex fleece hoodie now available in speckled green.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Features:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;50% cotton / 50% polyester.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Made in the USA.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Full-zip.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Available in green with specks of blue and the white Google logo embroidered at left bicep.&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
+      "image":"./src/images/pic3.jpg"
+    },
+    {
+      "name":"Baby+Hug+Jeens",
+      "title":"Baby hug Jeens",
+      "category":"kids",
+      "price":550.60,
+      "description":"Pack. Pack. Pack it up! This nylon jacket with reflective trim can literally be packed into itself in seconds. Features a waterproof nylon fabric, Android eyes &amp;amp; antennaes on the hood and a  carrying strap when jacket is fully packed. Android robot is printed on back above zipper in a reflective, metallic finish.",
+      "image":"./src/images/pic4.jpg"
+    },
+    {
+      "name":"Baby+Rose+Shoes",
+      "title":"Baby Rose Shoes",
+      "category":"kids",
+      "price":250.35,
+      "description":"Stay warm in this cozy hoodie made of 50% cotton and 50% polyester. This comfortable design features set in sleeves, dyed to match draw cord and a front pouch pocket. Available in Charcoal with the full color YouTube logo screen printed across the chest. Unisex sizing.",
+      "image":"./src/images/pic5.jpg"
+    },
+    {
+      "name":"Carters+Cloud",
+      "title":"Carters Cloud",
+      "category":"kids",
+      "price":560.20,
+      "description":"A versatile full-zip that you can wear all day long and even to the gym. This technical shell features moisture-wicking fabric, added stretch and a hidden pocket for your smartphone or media player.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Features:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;100% polyester.&lt;/li&gt;&lt;li&gt;Smooth, technical front with textured mesh back.&lt;/li&gt;&lt;li&gt;Drawstring bottom for adjustable fit.&lt;/li&gt;&lt;li&gt;Raglan sleeves.&lt;/li&gt;&lt;li&gt;Available in forest green with the white Google logo embroidered at left chest.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
+      "image":"./src/images/pic1.jpg"
+    },
+    {
+      "name":"Carters+Dinosaur",
+      "title":"Carters Dinosaur",
+      "category":"kids",
+      "price":450.50,
+      "description":"You'll be swooning over this crew neck as soon as you feel how soft it is.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Features:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;40% preshrunk ring-spun cotton, 60% polyester terry fleece.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Available in dark heather charcoal with the white Google logo screen printed across center chest.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
+      "image":"./src/images/pic2.jpg"
+    },
+    {
+      "name":"Carters+Monster",
+      "title":"Carters Monster",
+      "category":"kids",
+      "price":750.65,
+      "description":"Ultra soft. Ultra cozy. Our popular flex fleece hoodie now available in speckled green.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Features:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;50% cotton / 50% polyester.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Made in the USA.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Full-zip.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Available in green with specks of blue and the white Google logo embroidered at left bicep.&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
+      "image":"./src/images/pic3.jpg"
+    },
+    {
+      "name":"Baby+Hug+Jeens",
+      "title":"Baby hug Jeens",
+      "category":"kids",
+      "price":550.60,
+      "description":"Pack. Pack. Pack it up! This nylon jacket with reflective trim can literally be packed into itself in seconds. Features a waterproof nylon fabric, Android eyes &amp;amp; antennaes on the hood and a  carrying strap when jacket is fully packed. Android robot is printed on back above zipper in a reflective, metallic finish.",
+      "image":"./src/images/pic4.jpg"
+    },
+    {
+      "name":"Baby+Rose+Shoes",
+      "title":"Baby Rose Shoes",
+      "category":"kids",
+      "price":250.35,
+      "description":"Stay warm in this cozy hoodie made of 50% cotton and 50% polyester. This comfortable design features set in sleeves, dyed to match draw cord and a front pouch pocket. Available in Charcoal with the full color YouTube logo screen printed across the chest. Unisex sizing.",
+      "image":"./src/images/pic5.jpg"
+    },
+    {
+      "name":"Baby+Hug+Jeens",
+      "title":"Baby hug Jeens",
+      "category":"kids",
+      "price":550.60,
+      "description":"Pack. Pack. Pack it up! This nylon jacket with reflective trim can literally be packed into itself in seconds. Features a waterproof nylon fabric, Android eyes &amp;amp; antennaes on the hood and a  carrying strap when jacket is fully packed. Android robot is printed on back above zipper in a reflective, metallic finish.",
+      "image":"./src/images/pic4.jpg"
+    },
+    {
+      "name":"Baby+Rose+Shoes",
+      "title":"Baby Rose Shoes",
+      "category":"kids",
+      "price":250.35,
+      "description":"Stay warm in this cozy hoodie made of 50% cotton and 50% polyester. This comfortable design features set in sleeves, dyed to match draw cord and a front pouch pocket. Available in Charcoal with the full color YouTube logo screen printed across the chest. Unisex sizing.",
+      "image":"./src/images/pic5.jpg"
+    }
+  ]
+}
+  
