@@ -127,7 +127,11 @@ class MyApp extends PolymerElement {
       page: {
         type: String,
         reflectToAttribute: true,
-        // specify an observer to be invoked when the property changes ...
+        notify: true,
+        /**
+         * specify an observer to be invoked when the property changes on switch case 
+         * this observer will onserve the page is availabe or not in switch case...
+          */ 
         observer: '_pageChanged'
       },
       routeData: Object,
@@ -168,8 +172,9 @@ class MyApp extends PolymerElement {
   }
 
   _pageChanged(page) {
-    // Import the page component on demand.
-    
+    /**
+     * import pages component on demand
+     */
     switch (page) {
       case 'home':
         import('./home-page.js');
@@ -190,15 +195,13 @@ class MyApp extends PolymerElement {
         import('./order-confirmation.js');
         break;
       case 'footer':
-      import('./footer-component.js');
-      break;
+        import('./footer-component.js');
+        break;
       case 'view404':
         import('./my-view404.js');
         break;
     }
   }
-
-
 }
 
 //registering into the webbrowser using cusomelement
