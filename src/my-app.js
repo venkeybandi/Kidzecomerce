@@ -73,9 +73,7 @@ class MyApp extends PolymerElement {
      
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
         <!-- Drawer content -->
-         <app-drawer id="drawer">
-         
-        </app-drawer> 
+         <app-drawer id="drawer"></app-drawer> 
 
         <!-- Main content -->
         <app-header-layout has-scrolling-region="">
