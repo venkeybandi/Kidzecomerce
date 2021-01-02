@@ -4,7 +4,11 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './cart-summary-styles.js';
 
-// Define the new element as a class
+/**
+ * creat class name OrderSummary
+ * order-summary cutom element for reusable component
+ * Using one-way binding bind the order summary details
+ */
 class OrderSummary extends PolymerElement {
 // Provide a DOM template for the element
   static get template() {
@@ -50,15 +54,20 @@ class OrderSummary extends PolymerElement {
   }
     ready() {
         super.ready();
-        // this.itemList = JSON.parse(window.localStorage.getItem('productsInLocalStore'));
-
-        //summary calculations section Amount, Delivary charges, 
+        /**
+         * Order summary calculations productsmount, Delivary charges and Tax
+         * dellivarycharges for this.cartCost * 0.02
+         * Tax amount this.cartCost * 0.01 
+         * TOTAL Order  summarytotalamount
+         * this.cartCost + this.dellivarycharges + this.taxamount
+         * Math.round round figure the price
+         */
         this.cartCost = parseInt(window.localStorage.getItem('totalamount'));
-        //Delivary charges
+
         this.dellivarycharges = this.cartCost * 0.02;
-        //TAX charges
+
         this.taxamount = this.cartCost * 0.01;
-        // TOTAL Order summary amount
+
         this.summarytotalamount = Math.round(this.cartCost + this.dellivarycharges + this.taxamount);
     }
 }
