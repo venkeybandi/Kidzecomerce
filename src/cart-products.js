@@ -1,6 +1,11 @@
 // Import the Polymer library and html helper function
 // order-summary reusable components displaying order summary details 
 // import cart-summary-styles styles 
+
+/**
+ * Using one-way binding bind the addtocart products into cart
+ * implimented accessibility in products details tabindex, title, role, alt
+ */
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './cart-summary-styles.js';
 import './banners-promos/promo-banner3.js';
