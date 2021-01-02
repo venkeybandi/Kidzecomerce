@@ -17,6 +17,15 @@ import './dual-banners.js';
 import './products-delivary-banner.js';
 import './shared-styles.js';
 
+/**
+ * using reusable components creats home page for 
+ * landing brand promotions image slider <slider-home>
+ * Upcomming products component <newarival-products>
+ * Dual banner for promotion component <dual-banners>
+ * Best seller products componet <bestseller-products>
+ * single image promo banner <promo-banner2>
+ * Offerce and price drop component <offers-products>
+ */
 // Define the new element as a class
 class homepage extends PolymerElement {
    // Provide a DOM template for the element
