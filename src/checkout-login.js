@@ -33,11 +33,12 @@ class CheckoutLogin extends PolymerElement {
             font-family: "Roboto", "Noto", sans-serif;
             background: #f5f5f5;
             padding-top: 15px;
+            padding-bottom: 20px;
             }
             
             @media (max-width: 600px){
                 :host {
-                    padding-top: 0px;
+                    padding: 0px;
                 }
                 .card {
                     margin: 0;
