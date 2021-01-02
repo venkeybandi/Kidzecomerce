@@ -1,16 +1,15 @@
-
+// Import the Polymer library and html helper function
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
 
+// Define the new element as a class
 class ProductDetails extends PolymerElement {
+  // Provide a DOM template for the element
   static get template() {
     return html`
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
       <style include="shared-styles">
         :host {
           display: block;
@@ -141,9 +140,8 @@ class ProductDetails extends PolymerElement {
         </div>
       </div>
       </section>
-       
     `;
   }
 }
-
+//registering into the webbrowser using cusomelement
 window.customElements.define('product-details', ProductDetails);
