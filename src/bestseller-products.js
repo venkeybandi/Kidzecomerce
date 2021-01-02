@@ -55,7 +55,7 @@ class BestsellerProducts extends AddToCart {
             </div>
           </template>
           
-          <!-- Using  array-selector we are going to push the product details into arraylist -->
+          <!-- Using  array-selector  push the product details into arraylist -->
           <array-selector id="selector" items="{{response.results}}" selected="{{selected}}" multi toggle></array-selector>
         
         </div> <!-- products-container end-->
