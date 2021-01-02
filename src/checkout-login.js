@@ -1,29 +1,41 @@
+// Import the Polymer library and html helper function
+// Import the  Polymer iron-form
+// Import the  Polymer iron-icons
+// Import the  Polymer paper-input
+// import shared-styles styles 
+
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-//import {IronValidatableBehavior} from '@polymer/iron-validatable-behavior/iron-validatable-behavior.js';
 import '@polymer/iron-form/iron-form.js';
-import '@polymer/paper-button/paper-button.js';
-import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/iron-icons/iron-icons.js';
 import '@polymer/paper-input/paper-input.js';
-import '@polymer/iron-label/iron-label.js';
+import './products-delivary-banner.js';
 import './shared-styles.js';
 
+// Define the new element as a class CheckoutLogin
 class CheckoutLogin extends PolymerElement {
+    // Provide a DOM template for the element
     static get template() {
         return html `
        
-        
         <style include="shared-styles">
             *{
                 box-sizing: border-box;
             }
             :host {
             display: block;
-            padding: 10px;
             font-family: "Roboto", "Noto", sans-serif;
             background: #f5f5f5;
+            padding-top: 15px;
             }
             
+            @media (max-width: 600px){
+                :host {
+                    padding-top: 0px;
+                }
+                .card {
+                    margin: 0;
+                }
+            }
         </style>
 
         <div class="card">
@@ -40,7 +52,7 @@ class CheckoutLogin extends PolymerElement {
                             <iron-icon icon="icons:account-circle" slot="prefix"></iron-icon>
                         </paper-input>
 
-                        <paper-input  label="Phone Number" placeholder="" name="phone" id="phone" required auto-validate pattern="[0-9]*" error-message="Please enter the Phone number">
+                        <paper-input  label="Phone Number" placeholder="" name="phone" id="phone" required auto-validate pattern="[0-9]{10}" maxlength="10" error-message="Please enter the Phone number">
                             <iron-icon icon="icons:settings-phone" slot="prefix"></iron-icon>
                         </paper-input>
 
@@ -64,7 +76,7 @@ class CheckoutLogin extends PolymerElement {
                         <paper-input label="State" name="state" id="state" required auto-validate error-message="Please enter the state">
                             <iron-icon icon="icons:home" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input label="Pincode" name="pincode" id="pincode" pattern="[0-9]*" size="5"  required auto-validate error-message="Please enter the 5 digit area postal pincode">
+                        <paper-input label="Pincode" name="pincode" id="pincode" pattern="[0-9]{6}" maxlength="6" required auto-validate error-message="Please enter the 6 digit area postal pincode">
                             <iron-icon icon="icons:room" slot="prefix"></iron-icon>
                         </paper-input>
 
@@ -73,10 +85,10 @@ class CheckoutLogin extends PolymerElement {
                         <paper-input label="Card holder name" name="cardname" id="cardname"  required auto-validate error-message="Please enter the card holder name">
                             <iron-icon icon="icons:account-circle" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input  label="Card number" name="cardno" id="cardno"  required auto-validate pattern="[0-9]*" size="16" error-message="Please enter the 16 digit credit or debit card number">
+                        <paper-input  label="Card number" name="cardno" id="cardno"  required auto-validate pattern="[0-9]{16}" maxlength="16" error-message="Please enter the 16 digit credit or debit card number">
                             <iron-icon icon="icons:account-balance" slot="prefix"></iron-icon>
                         </paper-input>
-                        <paper-input  mask="*" label="Card pin number" name="cardpin" id="cardpin" pattern="[0-9]*" size="4"  required auto-validate error-message="Please enter the 4 digit number">
+                        <paper-input type="password" label="Card pin number" name="cardpin" id="cardpin" pattern="[0-9]{4}" maxlength="4"  required auto-validate error-message="Please enter the 4 digit number">
                             <iron-icon icon="icons:verified-user" slot="prefix"></iron-icon>
                         </paper-input>
 
@@ -90,45 +102,108 @@ class CheckoutLogin extends PolymerElement {
     `;
     }
     
-    
-    adddetails() {
-        // Check browser support
-        if (typeof(Storage) !== "undefined") {
+    //properties section if rquired any
+    static get properties() { return { 
+        response: { type: Object },
+        item:{        //item for list of the products
+            type: Array,
+            value: null
+        },
+        existingcustomer:{   //Existing entries products
+            type: Array,
+            value: null
+        },
+        customerlist:{       //productlist list new array
+            type: Array,
+            value: null
+        },
+        fname:{      //first name type string
+            type: String,
+            value: null
+        },
+        lname:{      //last name type string
+            type: String,
+            value: null
+        },
+        phone:{       //mobile number  type number
+            type: Number,
+            value: null
+        },
+        email:{      //mail id type string
+            type: String,
+            value: null
+        },
+        doorno:{      //home or office address type string
+            type: String,
+            value: null
+        },
+        street:{      //street type string
+            type: String,
+            value: null
+        },
+        city:{      //city type string
+            type: String,
+            value: null
+        },
+        state:{      //state type string
+            type: String,
+            value: null
+        },
+        pincode:{      //postal code type number
+            type: Number,
+            value: null
+        },
+        cardname:{      //card name type string
+            type: String,
+            value: null
+        },
+        cardno:{      //Debit or credit number type
+            type: Number,
+            value: null
+        },
+        cardpin:{      //Debit or credit pin type number
+            type: Number,
+            value: null
+        }
+        }
+    }
+    adddetails() {        
 
-            // creating variables for using form validations 
-            var fname = this.$.fname.value;
-            var lname = this.$.lname.value;
-            var phone = this.$.phone.value;
-            var email = this.$.email.value;
+            // for  form validations 
+            this.fname = this.$.fname.value;
+            this.lname = this.$.lname.value;
+            this.phone = this.$.phone.value;
+            this.email = this.$.email.value;
 
-            var doorno = this.$.doorno.value;
-            var street = this.$.street.value;
-            var city = this.$.city.value;
-            var state = this.$.state.value;
-            var pincode = this.$.pincode.value;
+            this.doorno = this.$.doorno.value;
+            this.street = this.$.street.value;
+            this.city = this.$.city.value;
+            this.state = this.$.state.value;
+            this.pincode = this.$.pincode.value;
 
-            var cardname = this.$.cardname.value;
-            var cardno = this.$.cardno.value;
-            var cardpin = this.$.cardpin.value;
+            this.cardname = this.$.cardname.value;
+            this.cardno = this.$.cardno.value;
+            this.cardpin = this.$.cardpin.value;
 
             // checking the condition if the value is null or empty it's throw's error
 
-           if( fname !="" && lname !="" && phone !="" && email !="" &&doorno !="" && street !="" &&
-           city !="" && state !="" && pincode !="" && cardname !="" && cardno !="" && cardpin !="") 
+           if( this.fname !="" && this.lname !="" && this.phone !="" && this.email !="" && this.doorno !="" && this.street !="" &&
+           this.city !="" && this.state !="" && this.pincode !="" && this.cardname !="" && this.cardno !="" && this.cardpin !="") 
            {
 
-                var existingEntries = JSON.parse(localStorage.getItem("customer-entries"));
-                if (existingEntries == null) existingEntries = [];
-                var customerlist = [];
+                this.existingcustomer = JSON.parse(localStorage.getItem("customer-entries"));
+                if (this.existingcustomer == null) this.existingcustomer = [];
+                this.customerlist = [];
 
                 //using array updating customer details 
-                customerlist.push(fname, lname, phone, email, doorno, street, city, state, pincode, cardname, cardno, cardpin);
-                //using localstorage customer details
-                window.localStorage.setItem('Current-Entry-List', JSON.stringify(customerlist));
-                existingEntries.push(customerlist);
-                window.localStorage.setItem("customer-entries", JSON.stringify(existingEntries));
+                this.customerlist.push(this.fname, this.lname, this.phone, this.email, this.doorno, this.street, 
+                    this.city, this.state, this.pincode, this.cardname, this.cardno, this.cardpin);
 
-                window.alert("Succesfully completed to place order...");
+                //using localstorage customer details
+                window.localStorage.setItem('Current-Entry-List', JSON.stringify(this.customerlist));
+                this.existingcustomer.push(this.customerlist);
+                window.localStorage.setItem("customer-entries", JSON.stringify(this.existingcustomer));
+                window.localStorage.setItem('Current-Entry-List', JSON.stringify(this.customerlist));
                 
                 //locating to the orderconfirmation page if successfully form submition
                 window.location.href = "orderconfirm" ;
@@ -136,9 +211,6 @@ class CheckoutLogin extends PolymerElement {
 
             }
 
-        } else {
-            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-        }
     }
 }
 
