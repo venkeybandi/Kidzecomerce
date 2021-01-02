@@ -4,7 +4,11 @@
 // Import the Polymer iron-image
 // Import the Base class AddToCart form addto-cart component
 // @customElement
-
+/**
+ * using iron-ajax receving json data
+ * Using one-way binding bind the json data using do-repeat for listing products
+ * implimented accessibility in products details tabindex, title, role, alt
+ */
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { AddToCart } from './addtocart-operations.js';
 import '@polymer/iron-ajax/iron-ajax.js';
@@ -50,12 +54,12 @@ class BestsellerProducts extends AddToCart {
                 <img class="img" id="img" src='[[item.image]]' alt='[[item.title]]' tabindex="0"></img>
               </a>
               <h3 id="title" class="title" title="[[item.title]]" role="title" tabindex="0">[[item.title]]</h3>
-              <h4 id="price" class="price" title="[[item.price]]" tabindex="0"><iron-icon class="small" src = "./src/images/currency-inr.svg"></iron-icon>[[item.price]]</h4>
+              <h4 id="price" class="price" title="[[item.price]]" tabindex="0"><iron-icon class="small" src = "./src/images/currency-inr.svg" alt="rupee icon"></iron-icon>[[item.price]]</h4>
               <input type="submit" id="addtocart" on-click="addProduct" role="button" class="add-cart" value="Add Cart "></input>
             </div>
           </template>
           
-          <!-- Using  array-selector  push the product details into arraylist -->
+          <!-- Using  array-selector we are going to push the product details into arraylist -->
           <array-selector id="selector" items="{{response.results}}" selected="{{selected}}" multi toggle></array-selector>
         
         </div> <!-- products-container end-->
