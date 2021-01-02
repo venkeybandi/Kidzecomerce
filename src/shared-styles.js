@@ -71,6 +71,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         padding: 5px 10px!important;
         border-radius: 50%;
       }
+      
       @media (max-width: 600px){
         .drawer-list {
             margin: 0;
@@ -158,11 +159,10 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
     .card{
         width: 80%;
         margin: 0 auto;
-        margin-bottom: 15px;
     }
-    @media (max-width: 768px) and (min-width: 641px) {
+    @media (max-width: 1024px) and (min-width: 641px) {
       paper-input {
-        width: 45%;
+        width: 42%;
         margin: 0 10px 30px;
       } 
       .paperbtn{
