@@ -11,6 +11,13 @@ import '@polymer/paper-input/paper-input.js';
 import './products-delivary-banner.js';
 import './shared-styles.js';
 
+/**
+ * create form using iron-form
+ * paper-input creat input feilds
+ * error messages for validations
+ * pattrens and maxlength for restrict to the input feilds 
+ * iron-icons for input placeholder representing symbols
+ */
 // Define the new element as a class CheckoutLogin
 class CheckoutLogin extends PolymerElement {
     // Provide a DOM template for the element
@@ -213,5 +220,5 @@ class CheckoutLogin extends PolymerElement {
 
     }
 }
-
+//@customElement BestsellerProducts register to webbrowser
 window.customElements.define('checkout-login', CheckoutLogin);
