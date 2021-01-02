@@ -7,6 +7,12 @@
 // import materialize styles 
 // import cart-summary-styles styles 
 
+/**
+ * export class CartDetails for accessing the properties and methods in child class
+ * <cart-products></cart-products> created for addtocart products for reusable componet
+ * <order-summary></order-summary> created for order summary for 
+ * calculating products amount, tax, delivery charges for reusable componet
+ */
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './cart-products.js';
 import './cart-summary-styles.js';
@@ -79,7 +85,7 @@ export class CartDetails extends PolymerElement {
             <div class="row">
                 <div class="col s12">
                     <div class="cart-title">
-                        <h1 class="title" tabindex="0">CART</h1>
+                        <h1 class="title" tabindex="0">CART [[cartquantity]]</h1>
                     </div>
                 </div>
             </div>
@@ -89,14 +95,14 @@ export class CartDetails extends PolymerElement {
             <div class="row">   <!-- row -->
                 <div class="col m6 s12"> <!-- col 6 12 start-->
 
-                    <!-- cart-products reusable components displaying addtocart products -->
+                    <!-- cart-products reusable component displaying addtocart products -->
                     <cart-products></cart-products>
                     <a  role="link" href="[[rootPath]]login" class="place-btn">Place Order</a>
                 </div>  <!-- col 6 12 end -->
 
                 <div class="col m6 s12"> <!-- col 6 12 start-->
 
-                <!-- order-summary reusable components displaying order summary details -->
+                <!-- order-summary reusable component displaying order summary details -->
                     <order-summary></order-summary>
                 </div>   <!-- col 6 12 end -->
 
