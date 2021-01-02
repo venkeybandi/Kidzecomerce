@@ -1,4 +1,14 @@
 
+// Import the Polymer library and html helper function
+// Import the Polymer app-drawer-layout
+// Import the Polymer app-drawer
+// Import the Polymer app-header-layout
+// Import the Polymer app-header
+// Import the Polymer iron-pages
+// Import the Polymer app-route
+// Import the Polymer iron-selector
+// Import products-page, checkout-login, footer-component.js, order-confirmation
+
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { setPassiveTouchGestures, setRootPath } from '@polymer/polymer/lib/utils/settings.js';
 import '@polymer/app-layout/app-drawer/app-drawer.js';
@@ -11,19 +21,8 @@ import '@polymer/app-route/app-location.js';
 import '@polymer/app-route/app-route.js';
 import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-selector/iron-selector.js';
-import '@polymer/paper-icon-button/paper-icon-button.js';
-import './my-icons.js';
-import './cart-details.js';
-import './newarival-products.js';
-import './bestseller-products.js';
-import './slider-home.js';
 import './products-page.js';
-import './banners-promos/promo-banner1.js';
-import './banners-promos/promo-banner2.js';
-import './offers-products.js';
-import './dual-banners.js';
 import './order-confirmation.js';
-import './products-delivary-banner.js';
 import './checkout-login.js';
 import './footer-component.js';
 import './shared-styles.js';
@@ -38,7 +37,15 @@ setPassiveTouchGestures(true);
 // in `index.html`.
 setRootPath(MyAppGlobals.rootPath);
 
+// Define the new element as a class
 class MyApp extends PolymerElement {
+   ready() {    
+       super.ready();
+        //  something that requires access to the shadow tree
+        //  Cart quantity
+         this.cartquantity = window.localStorage.getItem('cartqty');
+   }
+   // Provide a DOM template for the element
   static get template() {
     return html`
       <style include="shared-styles">
@@ -49,11 +56,13 @@ class MyApp extends PolymerElement {
         }
       </style>
       
+      
       <!-- app-location is an element that provides synchronization between the browser location bar
       and the state of an app -->
 
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
       </app-location>
+      
       
       <!-- app-route: for implementation of routing -->
       <!-- pattern: reads the href property., hence set the page (pattern="/:page") 
@@ -61,7 +70,7 @@ class MyApp extends PolymerElement {
 
       <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
       </app-route>
-
+     
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
         <!-- Drawer content -->
          <app-drawer id="drawer">
@@ -73,16 +82,14 @@ class MyApp extends PolymerElement {
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall">
             <app-toolbar>
-              <div main-title="app-title">KidZ</div>
+              <div main-title="app-title" title="kidz" role="logo" tabindex="0">KidZ</div>
                 <div class="nav-links-top">
                   <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="home" href="[[rootPath]]home">Home</a>
-                    <!--<a name="productdetails" href="[[rootPath]]productdetails">Product Details</a>-->
-                    <a name="products" href="[[rootPath]]products">products</a>
-                    <!--<a name="orderconfirm" href="[[rootPath]]orderconfirm">orderconfirm</a>-->
-                    <a name="cart" class="cart" href="[[rootPath]]cart">
+                    <a name="home" href="[[rootPath]]home" role="link">Home</a>
+                    <a name="products" href="[[rootPath]]products" role="link">products</a>
+                    <a name="cart" class="cart" href="[[rootPath]]cart" role="link">
                       <iron-icon class="fa" icon="icons:shopping-cart"></iron-icon>
-                      <span id="cartValue"></span>
+                      <span id="cartValue" title="cart quantity {{cartquantity}}" tabindex="0">{{cartquantity}}</span>
                     </a>
                   </iron-selector>
                 </div> 
@@ -99,12 +106,10 @@ class MyApp extends PolymerElement {
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="404">
               <home-page name="home"></home-page>
               <products-page name="products"></products-page>
-              <product-details name="productdetails"></product-details>
-              <cart-details name="cart"></cart-details>
+              <cart-details name="cart"></cart-details>              
+              <checkout-login name="login"></checkout-login>
               <order-confirmation name="orderconfirm"></order-confirmation>
               <my-view404 name="view404"></my-view404>
-              <checkout-login name="login"></checkout-login>
-              <footer-component name="footer"></footer-component>
           </iron-pages>
 
           <!-- Default componets on every page -->
@@ -118,9 +123,11 @@ class MyApp extends PolymerElement {
 
   static get properties() {
     return {
+      // define a property ..
       page: {
         type: String,
         reflectToAttribute: true,
+        // specify an observer to be invoked when the property changes ...
         observer: '_pageChanged'
       },
       routeData: Object,
@@ -128,9 +135,8 @@ class MyApp extends PolymerElement {
     };
   }
 
-  ready() {
-    super.ready();
-  }
+ 
+  
 
   /* observer: Its a simple observer (basically a watch which holds current value & old value) 
      that triggers whenever data changed in page property. 
@@ -158,13 +164,12 @@ class MyApp extends PolymerElement {
     if (!this.$.drawer.persistent) {
       this.$.drawer.close();
     }
+
   }
 
   _pageChanged(page) {
     // Import the page component on demand.
-    //
-    // Note: `polymer build` doesn't like string concatenation in the import
-    // statement, so break it up.
+    
     switch (page) {
       case 'home':
         import('./home-page.js');
@@ -192,6 +197,9 @@ class MyApp extends PolymerElement {
         break;
     }
   }
+
+
 }
 
+//registering into the webbrowser using cusomelement
 window.customElements.define('my-app', MyApp);
